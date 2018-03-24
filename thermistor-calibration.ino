@@ -112,9 +112,10 @@ void GetResistance(float *RT, int n, int R1[], int adcmul) {
 
   for (int x = 0; x < n; x++) {
     // From Josiah
-    //float VTf = (float)VT[x] * ADCMUL * 1000;
-    //RT[x] = ( (VTf* R1[x]) / ( VTf - 4.92 )); // Where VT is the Voltage across the Thermistor
-    RT[x] = (R1[x] * ( (VCC/2) / ( ( (float)VT[x] * ADCMUL ) / 1000  ))); // to resistance
+    float VTf = ((float)VT[x] * ADCMUL) / 1000;
+    RT[x] = ( - (VTf* R1[x]) / ( VTf - 4.92 )); // Where VT is the Voltage across the Thermistor
+    //RT[x] = (R1[x] * ( (VCC/2) / ( ( (float)VT[x] * ADCMUL ) / 1000  ))); // to resistance
+    //RT[x] = R1[x] * ((4.92 / 2) / ((((float)VT[x]) * .186) / 1000));
     //RT[x] = ((float)VT[x] * ADCMUL) / 1000 ;
   }
 }
