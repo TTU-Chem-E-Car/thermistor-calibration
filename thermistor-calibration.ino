@@ -122,11 +122,11 @@ void GetResistance(float *RT, int n, int R1[], int adcmul) {
 
 void printArr(float arr[], int n, long t) {
   Serial.print(t); Serial.print(F("\t"));
-  for (int x = 0; x < n; x++) {
-    Serial.print(arr[x]); 
-    Serial.print(F("\t"));
-  }
   Serial.print(thermocouple.readFahrenheit());
+  for (int x = 0; x < n; x++) {
+    Serial.print(F("\t"));
+    Serial.print(arr[x]); 
+  }
   Serial.println();
 }
 
